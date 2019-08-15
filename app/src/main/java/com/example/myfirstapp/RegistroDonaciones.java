@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Main4Activity extends AppCompatActivity {
+public class RegistroDonaciones extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class Main4Activity extends AppCompatActivity {
     }
 
     public void goBack(View view){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, PantallaPrincipal.class);
         startActivity(intent);
     }
 }

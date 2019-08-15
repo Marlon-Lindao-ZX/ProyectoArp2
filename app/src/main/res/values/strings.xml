@@ -19,4 +19,21 @@
     <string name="cerrar_sesion">Cerrar Sesion</string>
     <string name="tipo_de_donacion">Tipo de donacion</string>
     <string name="registro_de_donaciones">Registro de donaciones</string>
+    <string name="retiro_de_donacion_por_da_o">Retiro de Donacion por Daño</string>
+    <string name="ubicacions">Ubicacion:</string>
+    <string name="retiro_de_donacion">Retiro de donacion</string>
+    <string name="para_comunidades">para comunidades</string>
+    <string name="a_adir">Añadir</string>
+    <string name="a_adir_categoria">Añadir Categoria</string>
+    <string name="a_adir_informacion">Añadir Informacion</string>
+    <string name="donacion">Donacion</string>
+    <string name="nombre">Nombre</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="imagen">Imagen</string>
+    <string name="cargar">Cargar</string>
+    <string name="name">Name</string>
+    <string name="name">Name</string>
+    <string name="a_adir">Añadir</string>
+    <string name="a_adir_ubicacion">Añadir Ubicacion</string>
+    <string name="a_adir">Añadir</string>
 </resources>

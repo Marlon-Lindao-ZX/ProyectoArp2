@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main3Activity">
+    tools:context=".RetiroDonaciones">
 
     <TextView
         android:id="@+id/textView5"
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="252dp"
         android:text="@string/retiro_para_comunidades"
+        android:onClick="toComunity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +41,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/retiro_por_da_os"
+        android:onClick="toDanio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class PantallaPrincipal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,19 +15,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toRegister(View view){
-        Intent intent = new Intent(this,Main4Activity.class);
+        Intent intent = new Intent(this, RegistroDonaciones.class);
         startActivity(intent);
 
     }
 
     public void toRetire(View view){
-        Intent intent = new Intent(this,Main3Activity.class);
+        Intent intent = new Intent(this, RetiroDonaciones.class);
         startActivity(intent);
 
     }
 
     public void toAdd(View view){
-        Intent intent = new Intent(this,Main2Activity.class);
+        Intent intent = new Intent(this, RegistroInformacion.class);
         startActivity(intent);
 
     }

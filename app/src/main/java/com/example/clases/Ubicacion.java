@@ -14,6 +14,11 @@ public class Ubicacion implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return codigo;
+    }
+
     public String getCodigo() {
         return codigo;
     }
