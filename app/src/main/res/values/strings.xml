@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mi primera app</string>
+    <string name="de_donaciones">de donaciones</string>
+    <string name="fundacion_dar">Fundacion Dar</string>
+    <string name="registrar">Registrar</string>
+    <string name="a_adir_informacion">Añadir Informacion</string>
+    <string name="button">Button</string>
+    <string name="sistema_de_registro">Sistema de Registro</string>
+    <string name="registro_de_informacion">Registro de Informacion</string>
+    <string name="donacion">Donacion</string>
+    <string name="categoria">Categoria</string>
+    <string name="ubicacion">Ubicacion</string>
+    <string name="retirar_donacion">Retirar Donacion</string>
+    <string name="todo">TODO</string>
+</resources>
