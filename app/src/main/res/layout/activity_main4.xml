@@ -99,6 +99,7 @@
         android:layout_marginLeft="28dp"
         android:layout_marginBottom="64dp"
         android:text="@string/atras"
+        android:onClick="goBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -65,6 +65,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/registrar"
+        android:onClick="toRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +82,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/a_adir_informacion"
+        android:onClick="toAdd"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -98,6 +100,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="176dp"
         android:text="@string/retirar_donacion"
+        android:onClick="toRetire"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -123,6 +126,7 @@
         android:layout_marginLeft="28dp"
         android:layout_marginBottom="44dp"
         android:text="@string/cerrar_sesion"
+        android:onClick="terminate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
