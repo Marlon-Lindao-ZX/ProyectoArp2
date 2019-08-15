@@ -17,4 +17,6 @@
     <string name="retiro_por_da_os">Retiro por daños</string>
     <string name="atras">Atras</string>
     <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="tipo_de_donacion">Tipo de donacion</string>
+    <string name="registro_de_donaciones">Registro de donaciones</string>
 </resources>
