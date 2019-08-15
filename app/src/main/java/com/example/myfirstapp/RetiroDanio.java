@@ -15,7 +15,6 @@ public class RetiroDanio extends AppCompatActivity {
     }
 
     public void goBack(View view){
-        Intent intent = new Intent(this, RetiroDonaciones.class);
-        startActivity(intent);
+        finish();
     }
 }

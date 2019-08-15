@@ -3,11 +3,11 @@
     <string name="de_donaciones">de donaciones</string>
     <string name="fundacion_dar">Fundacion Dar</string>
     <string name="registrar">Registrar</string>
-    <string name="a_adir_informacion">Añadir Informacion</string>
+    <string name="a_adir_informacion1">Añadir Informacion</string>
     <string name="button">Button</string>
     <string name="sistema_de_registro">Sistema de Registro</string>
     <string name="registro_de_informacion">Registro de Informacion</string>
-    <string name="donacion">Donacion</string>
+    <string name="donacion1">Donacion</string>
     <string name="categoria">Categoria</string>
     <string name="ubicacion">Ubicacion</string>
     <string name="retirar_donacion">Retirar Donacion</string>
@@ -23,7 +23,7 @@
     <string name="ubicacions">Ubicacion:</string>
     <string name="retiro_de_donacion">Retiro de donacion</string>
     <string name="para_comunidades">para comunidades</string>
-    <string name="a_adir">Añadir</string>
+    <string name="a_adir1">Añadir</string>
     <string name="a_adir_categoria">Añadir Categoria</string>
     <string name="a_adir_informacion">Añadir Informacion</string>
     <string name="donacion">Donacion</string>
@@ -32,8 +32,8 @@
     <string name="imagen">Imagen</string>
     <string name="cargar">Cargar</string>
     <string name="name">Name</string>
-    <string name="name">Name</string>
-    <string name="a_adir">Añadir</string>
+    <string name="name2">Name</string>
+    <string name="a_adir2">Añadir</string>
     <string name="a_adir_ubicacion">Añadir Ubicacion</string>
     <string name="a_adir">Añadir</string>
 </resources>

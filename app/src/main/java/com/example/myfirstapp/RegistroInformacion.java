@@ -30,8 +30,7 @@ public class RegistroInformacion extends AppCompatActivity {
     }
 
     public void goBack(View view){
-        Intent intent = new Intent(this, PantallaPrincipal.class);
-        startActivity(intent);
+        finish();
     }
 
 }

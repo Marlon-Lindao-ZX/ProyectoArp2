@@ -15,7 +15,6 @@ public class RegistroCategorias extends AppCompatActivity {
     }
 
     public void goBack(View view){
-        Intent intent = new Intent(this, RegistroInformacion.class);
-        startActivity(intent);
+        finish();
     }
 }
