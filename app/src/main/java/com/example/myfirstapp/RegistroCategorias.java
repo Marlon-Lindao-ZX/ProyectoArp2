@@ -29,13 +29,18 @@ public class RegistroCategorias extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                parent.setSelection(position);
             }
 
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
             }
         });
+    }
+
+    public void toType(View view){
+        Intent intent = new Intent(this, RegistroTipoDonacion.class);
+        startActivity(intent);
     }
 
     public void goBack(View view){
