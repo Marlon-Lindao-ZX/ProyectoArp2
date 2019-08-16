@@ -45,17 +45,17 @@ public class RegistroDonaciones extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 ArrayList<String> cat = new ArrayList<>();
                 for(Clasificacion c: Listas.getClasificaciones()){
-                    if(c.getTipo().equals(parent.getItemAtPosition(position))){
+                    if(c.getTipo().equals((String) spinner.getSelectedItem())){
                         cat.addAll(c.getCategorias());
                         break;
                     }
                 }
-                Spinner tempSpinner = findViewById(R.id.spinner_cat);
                 ArrayAdapter<String> tempAA = new ArrayAdapter<>(getParent(),android.R.layout.simple_spinner_item, cat);
                 tempAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                tempSpinner.setAdapter(tempAA);
+                spinner2.setAdapter(tempAA);
             }
 
             @Override

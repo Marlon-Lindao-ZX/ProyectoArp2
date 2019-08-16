@@ -30,6 +30,7 @@ public class RegistroUbicacion extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+
             }
 
             @Override

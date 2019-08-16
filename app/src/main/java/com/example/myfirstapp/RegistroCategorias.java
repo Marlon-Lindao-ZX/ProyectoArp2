@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.clases.Clasificacion;
@@ -23,17 +25,37 @@ public class RegistroCategorias extends AppCompatActivity {
 
         ArrayList<String> temp = Listas.getTipos();
         Spinner spinner = findViewById(R.id.spinnerACT);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, temp);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_selectable_list_item, temp);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
         spinner.setAdapter(arrayAdapter);
+        spinner.setEnabled(true);
+        spinner.setSelected(true);
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 parent.setSelection(position);
+                spinner.setSelected(true);
             }
 
             @Override
-            public void onNothingSelected(AdapterView <?> parent) {
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        Button btnAdd = findViewById(R.id.buttonAddRC);
+        btnAdd.setOnClickListener(e->{
+            EditText text = findViewById(R.id.editTextRC);
+            String value = text.getText().toString();
+            String valor = (String) spinner.getSelectedItem();
+            if(valor.equals("") || valor == null || value.equals("")){
+                for(Clasificacion c: Listas.getClasificaciones()){
+                    if(c.getTipo().equals(valor) && !c.getCategorias().contains(value)){
+                        c.getCategorias().add(value);
+                        finish();
+                    }
+                }
             }
         });
     }
