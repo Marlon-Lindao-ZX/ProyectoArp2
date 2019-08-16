@@ -6,7 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.clases.Listas;
+
 public class PantallaPrincipal extends AppCompatActivity {
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Listas.crearListas();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

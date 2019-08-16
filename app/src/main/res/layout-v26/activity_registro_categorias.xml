@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.444" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/spinnerACT"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -2,6 +2,10 @@ package com.example.clases;
 
 import org.jetbrains.annotations.Contract;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -12,8 +16,10 @@ public class Listas {
     private static LinkedList<Donation> donaciones;
     private static LinkedList<DonationInfo> infos;
     private static HashSet<Ubicacion> ubicaciones;
+    private static LinkedList<Clasificacion> clasificaciones;
     private static ArrayList<String> categorias;
     private static ArrayList<String> tipos;
+    private static boolean señalador;
 
     private Listas(){}
 
@@ -23,6 +29,61 @@ public class Listas {
         ubicaciones = new HashSet<>();
         categorias = new ArrayList<>();
         tipos = new ArrayList<>();
+        clasificaciones = new LinkedList<>();
+    }
+
+    public static void cargarListas(){
+        File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
+        File file2 = new File(RutaArchivos.getRUTADONACIONES());
+        File file3 = new File(RutaArchivos.getRUTADONACIONESINFO());
+        File file4 = new File(RutaArchivos.getRUTAUBICACION());
+
+        if(!file1.exists()){
+            try {
+                file1.createNewFile();
+            } catch(IOException ioe) {}
+        }else{
+
+        }
+
+        if(!file2.exists()){
+            try {
+                file2.createNewFile();
+            } catch(IOException ioe) {}
+        }else{
+
+        }
+
+        if(!file3.exists()){
+            try {
+                file3.createNewFile();
+            } catch(IOException ioe) {}
+        }else{
+
+        }
+
+        if(!file4.exists()){
+            try {
+                file4.createNewFile();
+            } catch(IOException ioe) {}
+        }else{
+
+        }
+
+
+    }
+
+    public static void guardarListas(){
+
+    }
+
+    @Contract(pure = true)
+    public static LinkedList<Clasificacion> getClasificaciones() {
+        return clasificaciones;
+    }
+
+    public static void setClasificaciones(LinkedList<Clasificacion> clasificaciones) {
+        Listas.clasificaciones = clasificaciones;
     }
 
     @org.jetbrains.annotations.Contract(pure = true)

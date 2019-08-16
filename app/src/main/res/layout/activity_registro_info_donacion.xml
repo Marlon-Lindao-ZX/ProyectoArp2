@@ -125,7 +125,7 @@
         app:layout_constraintVertical_bias="0.66" />
 
     <Spinner
-        android:id="@+id/spinner6"
+        android:id="@+id/spinnerAIDT"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.301" />
 
     <Spinner
-        android:id="@+id/spinner7"
+        android:id="@+id/spinnerAIDTC"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
