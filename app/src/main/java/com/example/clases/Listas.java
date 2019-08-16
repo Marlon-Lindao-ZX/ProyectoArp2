@@ -1,5 +1,6 @@
 package com.example.clases;
 
+import android.app.Application;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -19,29 +20,35 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 
-public class Listas {
+public class Listas extends Application {
 
-    private static LinkedList<Donation> donaciones;
-    private static LinkedList<DonationInfo> infos;
-    private static HashSet<Ubicacion> ubicaciones;
-    private static LinkedList<Clasificacion> clasificaciones;
-    private static ArrayList<String> categorias;
-    private static ArrayList<String> tipos;
-    private static boolean señalador;
+    private LinkedList<Donation> donaciones;
+    private LinkedList<DonationInfo> infos;
+    private HashSet<Ubicacion> ubicaciones;
+    private LinkedList<Clasificacion> clasificaciones;
+    private ArrayList<String> categorias;
+    private ArrayList<String> tipos;
+    private ArrayList<String> locations;
+    private boolean señalador;
 
-    private Listas(){}
+    public Listas(){}
 
-    public static void crearListas(){
+    public void crearListas(){
         donaciones = new LinkedList<>();
         infos = new LinkedList<>();
         ubicaciones = new HashSet<>();
         categorias = new ArrayList<>();
         tipos = new ArrayList<>();
         clasificaciones = new LinkedList<>();
+        locations = new ArrayList<>();
+
+        tipos.add("Seleccionar");
+        categorias.add("Seleccionar");
+        locations.add("Seleccionar");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static void cargarListas(){
+    public void cargarListas(){
         File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
         File file2 = new File(RutaArchivos.getRUTADONACIONES());
         File file3 = new File(RutaArchivos.getRUTADONACIONESINFO());
@@ -103,7 +110,7 @@ public class Listas {
 
     }
 
-    public static void guardarListas(){
+    public void guardarListas(){
         File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
         File file2 = new File(RutaArchivos.getRUTADONACIONES());
         File file3 = new File(RutaArchivos.getRUTADONACIONESINFO());
@@ -139,57 +146,59 @@ public class Listas {
 
     }
 
-    @Contract(pure = true)
-    public static LinkedList<Clasificacion> getClasificaciones() {
-        return clasificaciones;
-    }
-
-    public static void setClasificaciones(LinkedList<Clasificacion> clasificaciones) {
-        Listas.clasificaciones = clasificaciones;
-    }
-
-    @org.jetbrains.annotations.Contract(pure = true)
-    public static LinkedList<Donation> getDonaciones() {
+    public LinkedList<Donation> getDonaciones() {
         return donaciones;
     }
 
-    public static void setDonaciones(LinkedList<Donation> donaciones) {
-        Listas.donaciones = donaciones;
+    public void setDonaciones(LinkedList<Donation> donaciones) {
+        this.donaciones = donaciones;
     }
 
-    @Contract(pure = true)
-    public static LinkedList<DonationInfo> getInfos() {
+    public LinkedList<DonationInfo> getInfos() {
         return infos;
     }
 
-    public static void setInfos(LinkedList<DonationInfo> infos) {
-        Listas.infos = infos;
+    public void setInfos(LinkedList<DonationInfo> infos) {
+        this.infos = infos;
     }
 
-    @Contract(pure = true)
-    public static HashSet<Ubicacion> getUbicaciones() {
+    public HashSet<Ubicacion> getUbicaciones() {
         return ubicaciones;
     }
 
-    public static void setUbicaciones(HashSet<Ubicacion> ubicaciones) {
-        Listas.ubicaciones = ubicaciones;
+    public void setUbicaciones(HashSet<Ubicacion> ubicaciones) {
+        this.ubicaciones = ubicaciones;
     }
 
-    @Contract(pure = true)
-    public static ArrayList<String> getCategorias() {
+    public LinkedList<Clasificacion> getClasificaciones() {
+        return clasificaciones;
+    }
+
+    public void setClasificaciones(LinkedList<Clasificacion> clasificaciones) {
+        this.clasificaciones = clasificaciones;
+    }
+
+    public ArrayList<String> getCategorias() {
         return categorias;
     }
 
-    public static void setCategorias(ArrayList<String> categorias) {
-        Listas.categorias = categorias;
+    public void setCategorias(ArrayList<String> categorias) {
+        this.categorias = categorias;
     }
 
-    @Contract(pure = true)
-    public static ArrayList<String> getTipos() {
+    public ArrayList<String> getTipos() {
         return tipos;
     }
 
-    public static void setTipos(ArrayList<String> tipos) {
-        Listas.tipos = tipos;
+    public void setTipos(ArrayList<String> tipos) {
+        this.tipos = tipos;
+    }
+
+    public ArrayList<String> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(ArrayList<String> locations) {
+        this.locations = locations;
     }
 }

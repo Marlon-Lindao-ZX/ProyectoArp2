@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.clases.Clasificacion;
 import com.example.clases.Listas;
+import com.example.clases.Ubicacion;
 
 import java.util.ArrayList;
 
@@ -21,21 +24,23 @@ public class RegistroUbicacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_ubicacion);
 
-        ArrayList<String> temp = Listas.getTipos();
+        Listas listas = (Listas) getApplicationContext();
+        ArrayList<String> temp = listas.getTipos();
         Spinner spinner = findViewById(R.id.spinnerRUT);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, temp);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
+        Button btnAdd = findViewById(R.id.buttonRU);
+        btnAdd.setOnClickListener(e->{
+            EditText text = findViewById(R.id.editTextRU);
+            String value = text.getText().toString();
+            String valor = (String) spinner.getSelectedItem();
+            if (!value.equals(""))
+                if (!valor.equals("Seleccionar") && (valor != null)) {
+                    listas.getUbicaciones().add(new Ubicacion(valor,value));
+                    finish();
+                }
         });
     }
 

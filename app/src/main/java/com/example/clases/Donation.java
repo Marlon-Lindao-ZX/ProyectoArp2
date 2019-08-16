@@ -9,12 +9,14 @@ public class Donation implements Serializable {
     private Date fechaExpiracion;
     private Ubicacion ubicacion;
     private String codigo;
+    private static int contador;
 
-    public Donation(DonationInfo info, Date fechaExpiracion, Ubicacion ubicacion, String codigo) {
+    public Donation(DonationInfo info, Date fechaExpiracion, Ubicacion ubicacion) {
         this.info = info;
         this.fechaExpiracion = fechaExpiracion;
         this.ubicacion = ubicacion;
-        this.codigo = codigo;
+        this.codigo = "D-"+contador;
+        contador++;
     }
 
     public DonationInfo getInfo() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.clases.Clasificacion;
 import com.example.clases.Listas;
@@ -17,12 +18,14 @@ public class RegistroTipoDonacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_tipo_donacion);
 
+        Listas listas = (Listas) getApplicationContext();
         Button btnAgregar = (Button) findViewById(R.id.buttonAgregar);
         btnAgregar.setOnClickListener(e->{
+            //Spinner spinner = findViewById(R.id.spinnerACT);
             EditText edit = (EditText) findViewById(R.id.editTextTipoDonacion);
             String value = edit.getText().toString();
-            Listas.getClasificaciones().add(new Clasificacion(value));
-            Listas.getTipos().add(value);
+            listas.getClasificaciones().add(new Clasificacion(value));
+            listas.getTipos().add(value);
             finish();
         });
     }

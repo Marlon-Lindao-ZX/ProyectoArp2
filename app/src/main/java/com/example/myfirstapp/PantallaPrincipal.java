@@ -10,17 +10,17 @@ import com.example.clases.Listas;
 
 public class PantallaPrincipal extends AppCompatActivity {
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Listas.crearListas();
-        Listas.cargarListas();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Listas listas = (Listas) getApplicationContext();
+
+        listas.crearListas();
+        listas.cargarListas();
     }
 
     public void toRegister(View view){
@@ -42,7 +42,8 @@ public class PantallaPrincipal extends AppCompatActivity {
     }
 
     public void terminate(View view){
-        Listas.guardarListas();
+        Listas listas = (Listas) getApplicationContext();
+        listas.guardarListas();
         finish();
 
     }

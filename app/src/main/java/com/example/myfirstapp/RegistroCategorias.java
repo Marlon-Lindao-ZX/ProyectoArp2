@@ -18,45 +18,36 @@ import java.util.ArrayList;
 
 public class RegistroCategorias extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_categorias);
 
-        ArrayList<String> temp = Listas.getTipos();
+        Listas listas = (Listas) getApplicationContext();
+
+        ArrayList<String> temp = listas.getTipos();
         Spinner spinner = findViewById(R.id.spinnerACT);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_selectable_list_item, temp);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+        arrayAdapter.notifyDataSetChanged();
         spinner.setAdapter(arrayAdapter);
-        spinner.setEnabled(true);
-        spinner.setSelected(true);
-
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                parent.setSelection(position);
-                spinner.setSelected(true);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
 
         Button btnAdd = findViewById(R.id.buttonAddRC);
         btnAdd.setOnClickListener(e->{
             EditText text = findViewById(R.id.editTextRC);
             String value = text.getText().toString();
             String valor = (String) spinner.getSelectedItem();
-            if(valor.equals("") || valor == null || value.equals("")){
-                for(Clasificacion c: Listas.getClasificaciones()){
-                    if(c.getTipo().equals(valor) && !c.getCategorias().contains(value)){
-                        c.getCategorias().add(value);
-                        finish();
+            if (!value.equals(""))
+                if (!valor.equals("Seleccionar") && (valor != null)) {
+                    for (Clasificacion c : listas.getClasificaciones()) {
+                        if (c.getTipo().equals(valor) && !c.getCategorias().contains(value)) {
+                            c.getCategorias().add(value);
+                            finish();
+                        }
                     }
                 }
-            }
         });
     }
 

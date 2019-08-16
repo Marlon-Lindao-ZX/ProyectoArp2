@@ -1,31 +1,27 @@
 package com.example.clases;
 
-import android.widget.ImageView;
+import android.content.Context;
+import android.widget.Button;
 
 import java.io.Serializable;
 
 public class DonationInfo implements Serializable {
 
-    private ImageView img;
+    private Button btn;
     private String name;
     private String descripcion;
     private String tipo;
     private String categoria;
+    private static int contador;
 
-    public DonationInfo(ImageView img, String name, String descripcion, String tipo, String categoria) {
-        this.img = img;
+    public DonationInfo(Context context , String name, String descripcion, String tipo, String categoria) {
+        this.btn = new Button(context);
+        btn.setText(categoria+"-"+contador);
+        contador++;
         this.name = name;
         this.descripcion = descripcion;
         this.tipo = tipo;
         this.categoria = categoria;
-    }
-
-    public ImageView getImg() {
-        return img;
-    }
-
-    public void setImg(ImageView img) {
-        this.img = img;
     }
 
     public String getName() {
@@ -58,5 +54,13 @@ public class DonationInfo implements Serializable {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public Button getBtn() {
+        return btn;
+    }
+
+    public void setBtn(Button btn) {
+        this.btn = btn;
     }
 }
