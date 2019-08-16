@@ -1,11 +1,19 @@
 package com.example.clases;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import org.jetbrains.annotations.Contract;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -32,6 +40,7 @@ public class Listas {
         clasificaciones = new LinkedList<>();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void cargarListas(){
         File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
         File file2 = new File(RutaArchivos.getRUTADONACIONES());
@@ -43,7 +52,12 @@ public class Listas {
                 file1.createNewFile();
             } catch(IOException ioe) {}
         }else{
-
+            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file1)) {
+            }){
+                clasificaciones = (LinkedList<Clasificacion>) ois.readObject();
+            } catch (ClassNotFoundException e){}
+            catch(FileNotFoundException e){}
+            catch (IOException e){}
         }
 
         if(!file2.exists()){
@@ -51,7 +65,12 @@ public class Listas {
                 file2.createNewFile();
             } catch(IOException ioe) {}
         }else{
-
+            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file2)) {
+            }){
+                donaciones = (LinkedList<Donation>) ois.readObject();
+            } catch (ClassNotFoundException e){}
+            catch(FileNotFoundException e){}
+            catch (IOException e){}
         }
 
         if(!file3.exists()){
@@ -59,7 +78,12 @@ public class Listas {
                 file3.createNewFile();
             } catch(IOException ioe) {}
         }else{
-
+            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file3)) {
+            }){
+                infos = (LinkedList<DonationInfo>) ois.readObject();
+            } catch (ClassNotFoundException e){}
+            catch(FileNotFoundException e){}
+            catch (IOException e){}
         }
 
         if(!file4.exists()){
@@ -67,6 +91,12 @@ public class Listas {
                 file4.createNewFile();
             } catch(IOException ioe) {}
         }else{
+            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file4)) {
+            }){
+                ubicaciones = (HashSet<Ubicacion>) ois.readObject();
+            } catch (ClassNotFoundException e){}
+            catch(FileNotFoundException e){}
+            catch (IOException e){}
 
         }
 
@@ -74,6 +104,38 @@ public class Listas {
     }
 
     public static void guardarListas(){
+        File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
+        File file2 = new File(RutaArchivos.getRUTADONACIONES());
+        File file3 = new File(RutaArchivos.getRUTADONACIONESINFO());
+        File file4 = new File(RutaArchivos.getRUTAUBICACION());
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file1)) {
+        }){
+            oos.writeObject(clasificaciones);
+        }
+        catch(FileNotFoundException e){}
+        catch (IOException e){}
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file2)) {
+        }){
+            oos.writeObject(donaciones);
+        }
+        catch(FileNotFoundException e){}
+        catch (IOException e){}
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file3)) {
+        }){
+            oos.writeObject(infos);
+        }
+        catch(FileNotFoundException e){}
+        catch (IOException e){}
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file4)) {
+        }){
+            oos.writeObject(ubicaciones);
+        }
+        catch(FileNotFoundException e){}
+        catch (IOException e){}
 
     }
 

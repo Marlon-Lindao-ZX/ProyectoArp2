@@ -14,6 +14,7 @@ public class PantallaPrincipal extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         Listas.crearListas();
+        Listas.cargarListas();
     }
 
     @Override
@@ -41,7 +42,9 @@ public class PantallaPrincipal extends AppCompatActivity {
     }
 
     public void terminate(View view){
+        Listas.guardarListas();
         finish();
+
     }
 
 }
