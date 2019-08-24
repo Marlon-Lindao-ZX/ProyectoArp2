@@ -25,6 +25,7 @@ public class RegistroTipoDonacion extends AppCompatActivity {
             EditText edit = (EditText) findViewById(R.id.editTextTipoDonacion);
             String value = edit.getText().toString();
             listas.getClasificaciones().add(new Clasificacion(value));
+            //listas.getClasifications().setValue(listas.getClasificaciones());
             listas.getTipos().add(value);
             finish();
         });

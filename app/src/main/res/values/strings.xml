@@ -13,8 +13,8 @@
     <string name="retirar_donacion">Retirar Donacion</string>
     <string name="todo">TODO</string>
     <string name="retiro_de_donaciones">Retiro de donaciones</string>
-    <string name="retiro_para_comunidades">Retiro para comunidades</string>
-    <string name="retiro_por_da_os">Retiro por daños</string>
+    <string name="retiro_para_comunidades">Comunidades</string>
+    <string name="retiro_por_da_os">Daños</string>
     <string name="atras">Atras</string>
     <string name="cerrar_sesion">Cerrar Sesion</string>
     <string name="tipo_de_donacion">Tipo de donacion</string>

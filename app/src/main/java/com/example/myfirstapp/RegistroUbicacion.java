@@ -39,6 +39,7 @@ public class RegistroUbicacion extends AppCompatActivity {
             if (!value.equals(""))
                 if (!valor.equals("Seleccionar") && (valor != null)) {
                     listas.getUbicaciones().add(new Ubicacion(valor,value));
+                    //listas.getUbications().setValue(listas.getUbicaciones());
                     finish();
                 }
         });

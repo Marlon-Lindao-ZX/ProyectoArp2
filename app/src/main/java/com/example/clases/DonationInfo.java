@@ -1,7 +1,10 @@
 package com.example.clases;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.Button;
+
+import com.example.myfirstapp.R;
 
 import java.io.Serializable;
 
@@ -17,6 +20,26 @@ public class DonationInfo implements Serializable {
     public DonationInfo(Context context , String name, String descripcion, String tipo, String categoria) {
         this.btn = new Button(context);
         btn.setText(categoria+"-"+contador);
+        btn.setMaxHeight(30);
+        btn.setMaxWidth(30);
+        btn.setTextSize(15);
+
+
+        if(tipo.equals("Alimento") || tipo.equals("Medicina") || tipo.equals("Ropa")){
+            switch (tipo){
+                case "Alimento":
+                    btn.setTop(R.drawable.comida);
+                    break;
+                case "Medicina":
+                    btn.setTop(R.drawable.medicina);
+                    break;
+                case "Ropa":
+                    btn.setTop(R.drawable.ropa);
+                    break;
+            }
+
+
+        }
         contador++;
         this.name = name;
         this.descripcion = descripcion;

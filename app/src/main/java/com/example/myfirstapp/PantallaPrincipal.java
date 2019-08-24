@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.clases.Listas;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.provider.FirebaseInitProvider;
 
 public class PantallaPrincipal extends AppCompatActivity {
 
@@ -17,10 +20,12 @@ public class PantallaPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         Listas listas = (Listas) getApplicationContext();
 
         listas.crearListas();
-        listas.cargarListas();
+
     }
 
     public void toRegister(View view){
@@ -43,7 +48,6 @@ public class PantallaPrincipal extends AppCompatActivity {
 
     public void terminate(View view){
         Listas listas = (Listas) getApplicationContext();
-        listas.guardarListas();
         finish();
 
     }

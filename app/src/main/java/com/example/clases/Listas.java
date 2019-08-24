@@ -1,9 +1,19 @@
 package com.example.clases;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+import com.google.firebase.*;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.Contract;
 
@@ -19,132 +29,153 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 
 public class Listas extends Application {
 
     private LinkedList<Donation> donaciones;
     private LinkedList<DonationInfo> infos;
-    private HashSet<Ubicacion> ubicaciones;
+    private LinkedList<Ubicacion> ubicaciones;
     private LinkedList<Clasificacion> clasificaciones;
     private ArrayList<String> categorias;
     private ArrayList<String> tipos;
     private ArrayList<String> locations;
     private boolean señalador;
+    private static FirebaseApp fbp;
+    private static FirebaseDatabase mDataBase1;
+    private DatabaseReference mDataBase;
+    private DatabaseReference donations;
+    private DatabaseReference info;
+    private DatabaseReference ubications;
+    private DatabaseReference clasifications;
+    private static Context context;
 
-    public Listas(){}
+    public Listas(){
 
-    public void crearListas(){
-        donaciones = new LinkedList<>();
-        infos = new LinkedList<>();
-        ubicaciones = new HashSet<>();
+
+
         categorias = new ArrayList<>();
         tipos = new ArrayList<>();
-        clasificaciones = new LinkedList<>();
         locations = new ArrayList<>();
+        /*
+        mDataBase1 = FirebaseDatabase.getInstance();
+        donations = mDataBase1.getReference("donaciones");
+        ValueEventListener dontListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                try {
+                    donaciones = dataSnapshot.getValue(LinkedList.class);
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                }
+                // ...
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        donations.addValueEventListener(dontListener);
+        info = mDataBase1.getReference("informaciones");
+        ValueEventListener infoListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                try {
+                    infos =  dataSnapshot.getValue(LinkedList.class);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        info.addValueEventListener(infoListener);
+        ubications = mDataBase1.getReference("ubicaciones");
+        ValueEventListener ubiListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                try {
+                    ubicaciones =  dataSnapshot.getValue(LinkedList.class);
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                }
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        ubications.addValueEventListener(ubiListener);
+        clasifications = mDataBase1.getReference("clasificaciones");
+        ValueEventListener claListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                try {
+                    clasificaciones = dataSnapshot.getValue(LinkedList.class);
+                    if(clasificaciones != null){
+                        categorias.clear();
+                        categorias.add("Seleccionar");
+                        for(Clasificacion c: clasificaciones)
+                            categorias.add(c.getTipo());
+                    }
+
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                }
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        clasifications.addValueEventListener(claListener);
+
+         */
+    }
+
+    public void crearListas(){
+
+        if(donaciones == null && infos == null && ubicaciones == null && clasificaciones == null ){
+            donaciones = new LinkedList<>();
+            infos = new LinkedList<>();
+            ubicaciones = new LinkedList<>();
+            clasificaciones = new LinkedList<>();
+            /*
+            donations.setValue(donaciones);
+            info.setValue(infos);
+            ubications.setValue(ubicaciones);
+            clasifications.setValue(clasificaciones);
+
+             */
+
+        }
         tipos.add("Seleccionar");
         categorias.add("Seleccionar");
         locations.add("Seleccionar");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void cargarListas(){
-        File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
-        File file2 = new File(RutaArchivos.getRUTADONACIONES());
-        File file3 = new File(RutaArchivos.getRUTADONACIONESINFO());
-        File file4 = new File(RutaArchivos.getRUTAUBICACION());
-
-        if(!file1.exists()){
-            try {
-                file1.createNewFile();
-            } catch(IOException ioe) {}
-        }else{
-            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file1)) {
-            }){
-                clasificaciones = (LinkedList<Clasificacion>) ois.readObject();
-            } catch (ClassNotFoundException e){}
-            catch(FileNotFoundException e){}
-            catch (IOException e){}
-        }
-
-        if(!file2.exists()){
-            try {
-                file2.createNewFile();
-            } catch(IOException ioe) {}
-        }else{
-            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file2)) {
-            }){
-                donaciones = (LinkedList<Donation>) ois.readObject();
-            } catch (ClassNotFoundException e){}
-            catch(FileNotFoundException e){}
-            catch (IOException e){}
-        }
-
-        if(!file3.exists()){
-            try {
-                file3.createNewFile();
-            } catch(IOException ioe) {}
-        }else{
-            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file3)) {
-            }){
-                infos = (LinkedList<DonationInfo>) ois.readObject();
-            } catch (ClassNotFoundException e){}
-            catch(FileNotFoundException e){}
-            catch (IOException e){}
-        }
-
-        if(!file4.exists()){
-            try {
-                file4.createNewFile();
-            } catch(IOException ioe) {}
-        }else{
-            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file4)) {
-            }){
-                ubicaciones = (HashSet<Ubicacion>) ois.readObject();
-            } catch (ClassNotFoundException e){}
-            catch(FileNotFoundException e){}
-            catch (IOException e){}
-
-        }
-
-
-    }
-
-    public void guardarListas(){
-        File file1 = new File(RutaArchivos.getRUTACLASIFICACION());
-        File file2 = new File(RutaArchivos.getRUTADONACIONES());
-        File file3 = new File(RutaArchivos.getRUTADONACIONESINFO());
-        File file4 = new File(RutaArchivos.getRUTAUBICACION());
-
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file1)) {
-        }){
-            oos.writeObject(clasificaciones);
-        }
-        catch(FileNotFoundException e){}
-        catch (IOException e){}
-
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file2)) {
-        }){
-            oos.writeObject(donaciones);
-        }
-        catch(FileNotFoundException e){}
-        catch (IOException e){}
-
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file3)) {
-        }){
-            oos.writeObject(infos);
-        }
-        catch(FileNotFoundException e){}
-        catch (IOException e){}
-
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file4)) {
-        }){
-            oos.writeObject(ubicaciones);
-        }
-        catch(FileNotFoundException e){}
-        catch (IOException e){}
-
-    }
 
     public LinkedList<Donation> getDonaciones() {
         return donaciones;
@@ -162,11 +193,11 @@ public class Listas extends Application {
         this.infos = infos;
     }
 
-    public HashSet<Ubicacion> getUbicaciones() {
+    public LinkedList<Ubicacion> getUbicaciones() {
         return ubicaciones;
     }
 
-    public void setUbicaciones(HashSet<Ubicacion> ubicaciones) {
+    public void setUbicaciones(LinkedList<Ubicacion> ubicaciones) {
         this.ubicaciones = ubicaciones;
     }
 
@@ -200,5 +231,69 @@ public class Listas extends Application {
 
     public void setLocations(ArrayList<String> locations) {
         this.locations = locations;
+    }
+
+    public DatabaseReference getmDataBase() {
+        return mDataBase;
+    }
+
+    public void setmDataBase(DatabaseReference mDataBase) {
+        this.mDataBase = mDataBase;
+    }
+
+    public DatabaseReference getDonations() {
+        return donations;
+    }
+
+    public void setDonations(DatabaseReference donations) {
+        this.donations = donations;
+    }
+
+    public DatabaseReference getInfo() {
+        return info;
+    }
+
+    public void setInfo(DatabaseReference info) {
+        this.info = info;
+    }
+
+    public DatabaseReference getUbications() {
+        return ubications;
+    }
+
+    public void setUbications(DatabaseReference ubications) {
+        this.ubications = ubications;
+    }
+
+    public DatabaseReference getClasifications() {
+        return clasifications;
+    }
+
+    public void setClasifications(DatabaseReference clasifications) {
+        this.clasifications = clasifications;
+    }
+
+    public static FirebaseDatabase getmDataBase1() {
+        return mDataBase1;
+    }
+
+    public void setmDataBase1(FirebaseDatabase mDataBase1) {
+        Listas.mDataBase1 = mDataBase1;
+    }
+
+    public static FirebaseApp getFbp() {
+        return fbp;
+    }
+
+    public static void setFbp(FirebaseApp fbp) {
+        Listas.fbp = fbp;
+    }
+
+    public static Context getContext() {
+        return context;
+    }
+
+    public static void setContext(Context context) {
+        Listas.context = context;
     }
 }

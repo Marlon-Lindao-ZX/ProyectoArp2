@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "miprimeraapp-35e35",
+  "private_key_id": "3a21e3cf82e560a4bf2355017b2f66fe92c1dfc8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCCCKahYZ9WPgZU\nxdS8aJV8qFNtvZ8Ei7XvZ+o11UnW7xwKt6FtE5DBLLYv53YC1rsExYqIDGxC8iIo\n6KWucgKPjboY4p+vqaFHbHF4/T9PynlqURHxAStR/6hK4xtI2UeZTvvDZ4ymZFWS\nGEcqD1DAf4LHkqFOUGevsBvbhzrd0XT8TWcNgkw6FCWrsTTrwoHdKhi7UuPeuGFx\nUmoPHuszITAvpahPBGUQsziRoQ7vPRs8zzvJITBJP6DkfQKhdYSpSg+B7LLAMxGQ\ncUZnwW2XdQRkB+yx50Hzv8EwQgXr1hbWu4b3Gwr6pVVB2AfxAHWzN1BaWmtlc/JE\ncYNPkV/bAgMBAAECggEACgVVpgkqaNCF12GZh919a6pjJ4ld6FFF94moDHb/5j7u\nB8tn9spztNdXwPBS8VwP9Imup9ZhP3V+eW2YWw2xMdPnvAQ27ygg5CqwwfSuPN1r\nJuzRd6Ox7XNIymCfGSmZcXCbSU9BEQ+ZYpVZYp3kiLkq4Gtl3+2lV+43716IBFEE\nVlrgTwxfiuK3O3ttJL482Qme2+xhBRP+Epr8NgMHky36xVPgrVkBhOK5WfZDzZyH\nB/8sNViglBzXnDCHgmZeJRq3WnIORnOlrm1PFiK+42U1LT1SiZogjCorFg0cCsJO\nktY9ucede8jwuaE4jS7Z5IpBPo6JzFC8mGzh9TmHaQKBgQC3R+KR30CclbPff0LI\nbDgWmgTr0v0OaAN45w7PKIa0lKKoEH4ofmjt0KtnSUFn/z4KOJzmOWiU+gQeRcgb\n7ZS6tE6NEOQneZXmpksYLhtGdzI2HBP8IM+KVcSaWWB0FyOsRjdGbhDyK7hBWlDr\n5Kxx6IupeQyPXX6VVocZrR5/gwKBgQC1oGJ8ev0zslpWbzRuKY3v7J9QQp+9ahWw\nhluw80Ege7G0LeweNB++OAjrroeONT6sONNpE0pQM/dfy69qsqr0trgfNiNyvhBz\na45k/xZmepuIFK6VnGNCnUKvaD6aU+gAhJBJjoWVwmj1dnIKHAVk0GqHVhm1dwOi\n3uNFg44WyQKBgQCNKfvTGJ3ePNt+v7kDP37vwY8ax7YK24gZHfXlDrS572Vcht90\ndvCAguERu3V6ETiKjNIj7IGlhO+ZFWwsPo/4QZniwujHkrknHlvmctSlMHdm/7dQ\n0UCorqivrTlCEPRz4tz+DRZWP+A5zcNX/Rfo4BB55ncLERrHEQ8bcqBz2wKBgGhd\nInpYyYmdIF+uQrhSVGba1qhtwBA9Fv16FtHU1UVvDit0f8rTNLI+zJFwlh/W5I5d\nkM098mOnmKuJBOEQjT9UhvQYTcIvCJDp6saJ9TsplJlbGP6LAFZUuu7DvcU8FYHG\nqoo5xPTK4zi4uMqqU0ccoznk9ZzaKFK8NGfLMihRAoGAZ5TfKXQzFmhULp5cVRFk\nOTo00eesPJ811RkvE2rJEBNswkfykumqkdxQ7ikgd57z9ydwaAKUZc6apz53b8fM\n8Qdyqj1YcQQ8i+92GhpmXV3YAAvnseyYV4IGrf6jYQj7S9PQl6PyD6Xp1yLVj6Ra\n+wykyxjq1/RpeueG/OtO1Ow=\n-----END PRIVATE KEY-----\n",
+  "client_email": "miprimeraapp-35e35@appspot.gserviceaccount.com",
+  "client_id": "106085229727371188024",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/miprimeraapp-35e35%40appspot.gserviceaccount.com"
+}

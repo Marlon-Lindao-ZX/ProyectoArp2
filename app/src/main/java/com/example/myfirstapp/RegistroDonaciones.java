@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
@@ -19,10 +20,13 @@ import com.example.clases.Ubicacion;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class RegistroDonaciones extends AppCompatActivity {
+
+    private ArrayList<View> views = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,9 @@ public class RegistroDonaciones extends AppCompatActivity {
         Listas listas = (Listas) getApplicationContext();
 
         DonationInfo dif = null;
+
+        ScrollView scv = (ScrollView) findViewById(R.id.gdRD);
+
 
         ArrayList<String> ubicaciones = listas.getLocations();
         Spinner spinner3 = findViewById(R.id.spinnerRDU);
@@ -47,13 +54,13 @@ public class RegistroDonaciones extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ScrollView scv = (ScrollView) findViewById(R.id.scrollViewRD);
                 scv.removeAllViews();
-                String value = (String) parent.getSelectedItem();
-
+                String value1 = (String) parent.getSelectedItem();
+                Spinner tse = findViewById(R.id.spinner_tipo);
+                String value = (String) tse.getSelectedItem();
                 if(!value.equals("Seleccionar") && value != null){
                     for(DonationInfo di: listas.getInfos()){
-                        if(di.getCategoria().equals(value)){
+                        if(di.getTipo().equals(value)){
                             Button tmp = di.getBtn();
                             tmp.setOnClickListener(e->{
 
@@ -61,6 +68,7 @@ public class RegistroDonaciones extends AppCompatActivity {
                             scv.addView(tmp);
                         }
                     }
+
                 }
 
 

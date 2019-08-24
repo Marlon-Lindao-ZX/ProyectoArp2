@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
@@ -31,8 +32,8 @@ public class RetiroDanio extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ScrollView scv = (ScrollView) findViewById(R.id.scrollViewRDD);
-                scv.removeAllViews();
+                GridView scv = (GridView) findViewById(R.id.gdRDD);
+                scv.removeAllViewsInLayout();
                 String value = (String) adapterView.getSelectedItem();
                 if(!value.equals("Seleccionar") && value != null){
                     for(Donation di: listas.getDonaciones()){

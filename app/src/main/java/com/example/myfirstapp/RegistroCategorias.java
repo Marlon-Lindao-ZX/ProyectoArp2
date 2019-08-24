@@ -44,6 +44,7 @@ public class RegistroCategorias extends AppCompatActivity {
                     for (Clasificacion c : listas.getClasificaciones()) {
                         if (c.getTipo().equals(valor) && !c.getCategorias().contains(value)) {
                             c.getCategorias().add(value);
+                            //listas.getClasifications().setValue(listas.getClasificaciones());
                             finish();
                         }
                     }
