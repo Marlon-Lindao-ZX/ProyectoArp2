@@ -2,6 +2,7 @@ package com.example.clases;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class Donation implements Serializable {
 
@@ -19,6 +20,19 @@ public class Donation implements Serializable {
         this.ubicacion = ubicacion;
         this.codigo = "D-"+contador;
         contador++;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Donation donation = (Donation) o;
+        return codigo.equals(donation.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo);
     }
 
     public DonationInfo getInfo() {

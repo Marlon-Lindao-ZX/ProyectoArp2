@@ -113,13 +113,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.929" />
 
-    <GridView
-        android:id="@+id/gdRC"
+    <ScrollView
+        android:id="@+id/gdRC1"
         android:layout_width="321dp"
         android:layout_height="223dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.547" >
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

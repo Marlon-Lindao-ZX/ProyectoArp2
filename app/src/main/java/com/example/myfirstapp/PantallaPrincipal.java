@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.clases.Clasificacion;
+import com.example.clases.Donation;
 import com.example.clases.DonationInfo;
 import com.example.clases.Listas;
 import com.example.clases.Ubicacion;
@@ -45,14 +46,20 @@ public class PantallaPrincipal extends AppCompatActivity {
         donations.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-
+                Donation donation = dataSnapshot.getValue(Donation.class);
+                if(donation != null)
+                    listas.getDonaciones().add(donation);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Donation donation = dataSnapshot.getValue(Donation.class);
+                if(donation != null)
+                    listas.getDonaciones().remove(donation);
+            }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}

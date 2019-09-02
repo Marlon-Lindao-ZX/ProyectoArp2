@@ -88,7 +88,7 @@ public class RegistroInfoDonacion extends AppCompatActivity {
                 if(!valor3.equals("") && !valor4.equals("")){
                     DonationInfo di = new DonationInfo(this,valor3,valor4,valor1,valor2);
                     //listas.getInfos().add(di);
-                    listas.getInfo().child(di.getCod()).setValue(listas.getInfos());
+                    listas.getInfo().child(di.getCod()).setValue(di);
                     finish();
                 }
             }

@@ -1,14 +1,19 @@
 package com.example.myfirstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
@@ -18,24 +23,28 @@ import com.example.clases.DonationInfo;
 import com.example.clases.Listas;
 import com.example.clases.Ubicacion;
 
-import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
+import android.widget.Button;
+
 import java.util.ArrayList;
 
 
 public class RegistroDonaciones extends AppCompatActivity {
 
     private ArrayList<View> views = new ArrayList<>();
+    private Context contex;
+    private ArrayList<DonationInfo> dif2 = new ArrayList<>();
+    private DonationInfo dif;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
+        contex = this;
 
         Listas listas = (Listas) getApplicationContext();
 
-        DonationInfo dif = null;
 
         ScrollView scv = (ScrollView) findViewById(R.id.gdRD);
 
@@ -54,16 +63,35 @@ public class RegistroDonaciones extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                scv.removeAllViews();
+                views.clear();
                 String value1 = (String) parent.getSelectedItem();
                 Spinner tse = findViewById(R.id.spinner_tipo);
                 String value = (String) tse.getSelectedItem();
                 if(!value.equals("Seleccionar") && value != null){
                     for(DonationInfo di: listas.getInfos()){
                         if(di.getTipo().equals(value)){
-                            Button tmp = di.getBtn();
-                            tmp.setOnClickListener(e->{
+                            ImageButton tmp = new ImageButton(contex);
+                            tmp.setBackgroundColor(Color.TRANSPARENT);
 
+                            switch(di.getTipo()){
+                                case "Alimento":
+                                    tmp.setImageResource(R.drawable.comida);
+
+                                    break;
+                                case "Medicina":
+                                    tmp.setImageResource(R.drawable.medicina);
+                                    break;
+                                case "Ropa":
+                                    tmp.setImageResource(R.drawable.ropa);
+                                    break;
+                                default:
+                                    tmp.setImageResource(R.drawable.todos);
+                                    break;
+                            }
+
+
+                            tmp.setOnClickListener(e->{
+                                dif = di;
                             });
                             scv.addView(tmp);
                         }
@@ -119,7 +147,7 @@ public class RegistroDonaciones extends AppCompatActivity {
         Button btnAdd = (Button) findViewById(R.id.buttonAddRD);
         btnAdd.setOnClickListener(e->{
             String value = (String) spinner3.getSelectedItem();
-            if(dif != null || !value.equals("Seleccionar")){
+            if(dif != null && !value.equals("Seleccionar")){
                 Ubicacion temp2 = null;
                 for(Ubicacion u: listas.getUbicaciones()){
                     if(u.getCodigo().equals(value)) {
@@ -127,7 +155,8 @@ public class RegistroDonaciones extends AppCompatActivity {
                         break;
                     }
                 }
-                listas.getDonaciones().add(new Donation(dif,null,temp2));
+                Donation d = new Donation(dif,null,temp2);
+                listas.getDonations().child(d.getCodigo()).setValue(d);
                 finish();
             }
         });
