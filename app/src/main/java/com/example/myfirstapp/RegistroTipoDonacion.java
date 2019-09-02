@@ -24,8 +24,9 @@ public class RegistroTipoDonacion extends AppCompatActivity {
             //Spinner spinner = findViewById(R.id.spinnerACT);
             EditText edit = (EditText) findViewById(R.id.editTextTipoDonacion);
             String value = edit.getText().toString();
-            listas.getClasificaciones().add(new Clasificacion(value));
-            //listas.getClasifications().setValue(listas.getClasificaciones());
+            Clasificacion c = new Clasificacion(value);
+            //listas.getClasificaciones().add(c);
+            listas.getClasifications().child(c.getCod()).setValue(c);
             listas.getTipos().add(value);
             finish();
         });

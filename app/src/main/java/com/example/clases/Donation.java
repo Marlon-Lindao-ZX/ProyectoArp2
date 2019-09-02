@@ -11,6 +11,8 @@ public class Donation implements Serializable {
     private String codigo;
     private static int contador;
 
+    public Donation(){contador++;}
+
     public Donation(DonationInfo info, Date fechaExpiracion, Ubicacion ubicacion) {
         this.info = info;
         this.fechaExpiracion = fechaExpiracion;

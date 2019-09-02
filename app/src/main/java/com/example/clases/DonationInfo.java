@@ -15,36 +15,19 @@ public class DonationInfo implements Serializable {
     private String descripcion;
     private String tipo;
     private String categoria;
+    private String cod;
     private static int contador;
 
+    public DonationInfo(){contador++;}
+
     public DonationInfo(Context context , String name, String descripcion, String tipo, String categoria) {
-        this.btn = new Button(context);
-        btn.setText(categoria+"-"+contador);
-        btn.setMaxHeight(30);
-        btn.setMaxWidth(30);
-        btn.setTextSize(15);
-
-
-        if(tipo.equals("Alimento") || tipo.equals("Medicina") || tipo.equals("Ropa")){
-            switch (tipo){
-                case "Alimento":
-                    btn.setTop(R.drawable.comida);
-                    break;
-                case "Medicina":
-                    btn.setTop(R.drawable.medicina);
-                    break;
-                case "Ropa":
-                    btn.setTop(R.drawable.ropa);
-                    break;
-            }
-
-
-        }
+        cod = "DI-"+contador;
         contador++;
         this.name = name;
         this.descripcion = descripcion;
         this.tipo = tipo;
         this.categoria = categoria;
+
     }
 
     public String getName() {
@@ -85,5 +68,13 @@ public class DonationInfo implements Serializable {
 
     public void setBtn(Button btn) {
         this.btn = btn;
+    }
+
+    public String getCod() {
+        return cod;
+    }
+
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 }

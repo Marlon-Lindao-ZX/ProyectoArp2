@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
+
 
 
 public class Listas extends Application {
@@ -58,101 +58,7 @@ public class Listas extends Application {
         categorias = new ArrayList<>();
         tipos = new ArrayList<>();
         locations = new ArrayList<>();
-        /*
-        mDataBase1 = FirebaseDatabase.getInstance();
-        donations = mDataBase1.getReference("donaciones");
-        ValueEventListener dontListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                try {
-                    donaciones = dataSnapshot.getValue(LinkedList.class);
-                } catch (ClassCastException e) {
-                    e.printStackTrace();
-                }
-                // ...
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        };
-        donations.addValueEventListener(dontListener);
-        info = mDataBase1.getReference("informaciones");
-        ValueEventListener infoListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                try {
-                    infos =  dataSnapshot.getValue(LinkedList.class);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                // ...
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        };
-        info.addValueEventListener(infoListener);
-        ubications = mDataBase1.getReference("ubicaciones");
-        ValueEventListener ubiListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                try {
-                    ubicaciones =  dataSnapshot.getValue(LinkedList.class);
-                } catch (ClassCastException e) {
-                    e.printStackTrace();
-                }
-                // ...
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        };
-        ubications.addValueEventListener(ubiListener);
-        clasifications = mDataBase1.getReference("clasificaciones");
-        ValueEventListener claListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                try {
-                    clasificaciones = dataSnapshot.getValue(LinkedList.class);
-                    if(clasificaciones != null){
-                        categorias.clear();
-                        categorias.add("Seleccionar");
-                        for(Clasificacion c: clasificaciones)
-                            categorias.add(c.getTipo());
-                    }
-
-                } catch (ClassCastException e) {
-                    e.printStackTrace();
-                }
-                // ...
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        };
-        clasifications.addValueEventListener(claListener);
-
-         */
     }
 
     public void crearListas(){

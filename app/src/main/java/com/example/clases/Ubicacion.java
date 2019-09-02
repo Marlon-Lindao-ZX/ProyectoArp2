@@ -10,6 +10,8 @@ public class Ubicacion implements Serializable {
     private String descripcion;
     private static int contador;
 
+    public Ubicacion(){contador++;}
+
     public Ubicacion(String codigo, String tipo, String descripcion) {
         this.codigo = codigo;
         this.tipo = tipo;

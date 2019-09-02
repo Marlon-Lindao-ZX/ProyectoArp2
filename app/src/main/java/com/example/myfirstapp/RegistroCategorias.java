@@ -15,6 +15,7 @@ import com.example.clases.Clasificacion;
 import com.example.clases.Listas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RegistroCategorias extends AppCompatActivity {
 
@@ -44,7 +45,9 @@ public class RegistroCategorias extends AppCompatActivity {
                     for (Clasificacion c : listas.getClasificaciones()) {
                         if (c.getTipo().equals(valor) && !c.getCategorias().contains(value)) {
                             c.getCategorias().add(value);
-                            //listas.getClasifications().setValue(listas.getClasificaciones());
+                            HashMap<String,Object> map = new HashMap<>();
+                            map.put(c.getCod(),c);
+                            listas.getClasifications().updateChildren(map);
                             finish();
                         }
                     }
