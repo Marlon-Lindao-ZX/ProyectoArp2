@@ -57,7 +57,7 @@ public class RetiroDanio extends AppCompatActivity {
                 String value = (String) adapterView.getSelectedItem();
                 if(!value.equals("Seleccionar") && value != null){
                     for(Donation di: listas.getDonaciones()){
-                        if(di.getInfo().getCategoria().equals(value)){
+                        if(di.getUbicacion().getCodigo().equals(value)){
                             ImageButton tmp = new ImageButton(contex);
                             tmp.setBackgroundColor(Color.TRANSPARENT);
 
